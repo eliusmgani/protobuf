@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// Not necessary for Python but should still be declared to avoid name collisions 
+// in the Protocol Buffers namespace and non-Python languages
+package item_price;
+
+
+message ItemPrice {
+  string id = 1; 
+  string item_id = 2;
+  string uom = 3;
+  string item_name = 4;
+  string price_list = 5; 
+  string supplier = 6;
+  bool buying = 7; 
+  bool selling = 8;
+  string currency = 9;
+  float price_list_rate = 10; 
+  string note = 11;
+  string valid_from = 12;
+}
