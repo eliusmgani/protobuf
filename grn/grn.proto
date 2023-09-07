@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+// Not necessary for Python but should still be declared to avoid name collisions 
+// in the Protocol Buffers namespace and non-Python languages
+package grn;
+
+
+import "google/protobuf/timestamp.proto";
+
+message PurchaseReceipt {
+    string id = 1;
+    google.protobuf.Timestamp date_created = 2;
+    google.protobuf.Timestamp date_modified = 3;
+    BuyingType buying_type = 4;
+    string supplier = 5;
+    string supplier_name = 6;
+    string territory_id = 7;
+    string  company_id = 8;
+    string posting_date = 9;
+    string posting_time = 10;
+    string currency = 11;
+    string set_warehouse_id = 12;
+    float total_qty = 13;
+    float base_total = 14;
+    float base_net_total = 15;
+    string transporter_name = 16;
+    repeated PurchaseReceiptItem items = 17;
+    string owner = 18;
+    string modified_by = 19;
+    string cu_invoice_number = 20;
+  }
+
+  enum BuyingType {
+    PURCHASING = 0;
+    PROCUREMENT = 1;
+    Trade_Purchase = 2;
+  }
+
+  message PurchaseReceiptItem {
+    string item_id = 1;
+    string item_code = 2;
+    string item_name = 3;
+    string brand = 4;
+    string item_group_id = 5;
+    float received_qty = 6;
+    string uom = 7;
+    float rate = 8;
+    float amount = 9;
+    float net_amount = 10;
+    string material_request_id = 11;
+    string purchase_order = 12;
+  }
