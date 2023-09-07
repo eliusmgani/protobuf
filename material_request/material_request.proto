@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package material_request;
+
+import "google/protobuf/timestamp.proto";
+
+
+message MaterialRequest {
+    string id = 1;
+    google.protobuf.Timestamp date_created = 2;
+    google.protobuf.Timestamp date_modified = 3;
+    string owner = 4;
+    string modified_by = 5;
+
+
+    enum MaterialRequestType {
+        PURCHASE = 0;
+        MATERIAL_TRANSFER = 1;
+        MATERIAL_ISSUE = 2;
+        MANUFACTURE = 3;
+        CUSTOMER_PROVIDED = 4;
+    }
+    MaterialRequestType material_request_type = 6;
+    string transaction_date = 7;
+    string scheduled_date = 8;
+
+    enum Status {
+        DRAFT = 0;
+        STOPPED = 1;
+        CANCELLED = 2;
+        PARTIALLY_ORDERED = 3;
+        PARTIALLY_RECEIVED = 4;
+        ORDERED = 5;
+        ISSUED = 6;
+        TRANSFERRED = 7;
+        RECEIVED = 8;
+    }
+    Status status = 9;
+    string company_id = 10;
+    string set_warehouse_id = 11;
+    string target_warehouse_territory_id = 12;
+    repeated MaterialRequestItem items = 13;
+}
+
+message MaterialRequestItem {
+    string item_id = 1;
+    string item_code = 2;
+    string item_name = 3;
+    string item_group = 4;
+    string brand = 5;
+    float qty = 6;
+    string stock_uom = 7;
+    string uom = 8;
+    string warehouse_id = 9;
+    float conversion_factor = 10;
+    float stock_qty = 11;
+    float min_order_qty = 12;
+    float projected_qty = 13;
+    float actual_qty = 14;
+    float ordered_qty = 15;
+    float received_qty = 16;
+    float rate = 17;
+    float amount = 18;
+    string territory_id = 19;
+}
